@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails du niveau</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Niveau: {{ niveau.nom }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom prenom</th>
+                <th>Sexe</th>
+                <th>Date de naissance</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for eleve in  eleves%}
+            <tr>
+                <td>{{ eleve.nom }} {{ eleve.prenom }}</td>
+                <td>{{ eleve.sexe }} </td>
+                <td>{{ eleve.date_naissance }} </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
