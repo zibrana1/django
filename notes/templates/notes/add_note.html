@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une note</title>
+</head>
+
+<!-- <style>
+  /* static/votre_app/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select,
+input[type="text"], input[type='number'] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+</style> -->
+
+<body>
+  <form method="post" action="">
+    {% csrf_token %}
+
+    <!-- Champs du formulaire pour ajouter une note -->
+    <label for="eleve">Nom et Prenom  :</label>
+    <select name="eleve" id="eleve">
+      {% for eleve in eleves %}
+        <option value="54">{{ eleve.nom }} {{ eleve.prenom }}</option>
+      {% endfor %}
+    </select>
+
+    <br>
+
+    <label for="matiere">Matière :</label>
+    <select name="matiere" id="matiere">
+      {% for matiere in matieres %}
+        <option value="{{ matiere.id }}">{{ matiere.nom }}</option>
+      {% endfor %}
+    </select>
+
+    <br>
+
+    {{ form.valeur.label_tag }}
+    {{ form.valeur }}
+    <!-- <input type="number" name="note" id="note" required> -->
+
+    <br>
+
+    <input type="submit" value="Ajouter la note"> 
+    <!-- {{ form.as_p }} -->
+  </form>
+
+</body>
+</html>

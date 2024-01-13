@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des élèves</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            margin-left: 20%;
+            color: green;
+            font-weight: 200;
+            font-style: italic;
+            font-size: 18px;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Liste des élèves</h1>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Sexe</th>
+                <th>Date de naissance</th>
+                <th>Niveau</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for eleve in eleves %}
+            <tr>
+                <td>{{eleve.nom}} </td>
+                <td>{{ eleve.prenom }} </td>
+                <td> {{ eleve.sexe }}</td>
+                <td>{{ eleve.date_naissance }} </td>
+                <td>{{ eleve.niveau.nom }} </td>
+                <td> <a href="{% url  'notes:eleves' %}/{{ eleve.id_eleve }}">detail</a>
+            </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+<hr>
+    <a href="{% url 'notes:matieres'%}">Consulter la page Matière</a>
+    <a href="{% url 'notes:listEleves'%}">Importer Pdf</a>
+    {% comment %} <a href="{% url 'logout' %}">Déconnexion</a> {% endcomment %}
+</body>
+</html>

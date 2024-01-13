@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails de l'élèv</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-decoration:uppercase;
+        }
+
+        h3{
+            text-decoration: uppercase;
+            color: blue;
+            text-transform: uppercase;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+            color: green;
+            font-weight: 200;
+            font-style: italic;
+            font-size: 18px;
+
+        }
+        span{
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Eleve </h1>
+
+    <h3>Nom :<span>{{ eleve.nom }}</span> </h3>
+    <h3>Prénom :<span>{{ eleve.prenom }}</span> </h3>
+    <h3>Sexe :<span>{{ eleve.sexe }}</span> </h3>
+    <h3>Niveau : <span>{{ eleve.niveau.nom }}</span></h3>
+
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+            <tr>
+                <td>{{ note.matiere.nom }}</td>
+                <td>{{ note.valeur }}</td>
+                <td><a href="{% url 'notes:add_note' eleve.id_eleve matiere.id %}">Ajouter une note</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if notes %}
+        {% with total_notes=0 %}
+            {% for note in notes %}
+                {% with total_notes=total_notes |add note.valeur  %}
+            {% endfor %}
+            {% with moyenne=total_notes/notes|length %}
+                <p>Moyenne de la Matière : {{ moyenne }}</p>
+            {% endwith %}
+        {% endwith %}
+    {% else %}
+        <p>Aucune note disponible pour cette matière.</p>
+    {% endif %}
+
+    <a href="{% url 'notes:eleves'%}">Retour</a>
+</body>
+</html>

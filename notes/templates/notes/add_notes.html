@@ -1,0 +1,25 @@
+<!-- Contenu du fichier add_notes.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter des notes pour une matière</title>
+</head>
+<body>
+    <h1>Ajouter des notes pour une matière</h1>
+    <h2>{{ matiere.nom }}</h2>
+    
+    <form method="post" action="{% url 'notes:add_notes' matiere_id=matiere.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer les notes</button>
+    </form>
+
+    <ul>
+        {% for eleve in eleves %}
+            <li>{{ eleve.nom }} - {{ eleve.prenom }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
