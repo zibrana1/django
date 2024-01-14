@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes.apps.NotesConfig',
     'import_export',
+    'foundation',
 ]
 
 MIDDLEWARE = [

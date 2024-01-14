@@ -1,70 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'Accueil</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+{% extends "foundation/base.html" %}
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
+{% block base_body %}
 
-        nav {
-            background-color: #444;
-            padding: 10px;
-        }
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">GESTION NOTES</li>
+      <li>
+        <a href="#">Etudiants</a>
+        <ul class="menu vertical">
+          <li><a href="#">Liste</a></li>
+          <li><a href="#">Détail</a></li>
+          
+        </ul>
+      </li>
+      <li>
+        <a href="#">UEs</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Niveaux</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-        }
+{% endblock base_body %}
 
-        main {
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Mon Site Web</h1>
-    </header>
-
-    <nav>
-        <a href="#">Accueil</a>
-        <a href="#">À Propos</a>
-        <a href="#">Contact</a>
-    </nav>
-
-    <main>
-        <h2>Bienvenue sur notre page d'accueil!</h2>
-        <p>C'est un exemple de page d'accueil simple.</p>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Mon Site Web</p>
-    </footer>
-
-</body>
-</html>
